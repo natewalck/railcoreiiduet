@@ -46,8 +46,8 @@ M92 X201.5 Y201.5 Z1600 E837	    ; steps/mm
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
 M305 P1 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
 
-
-M307 H1 A417.4 C179.2 D4.4 S1.00 V24.3 B0 ;Heater 1 PID tuning settings
+M307 H0 A92.4 C462.7 D5.9 S1.00 V24.2 B0  ; Heated Bed (H0) PID tuning settings
+M307 H1 A417.4 C179.2 D4.4 S1.00 V24.3 B0 ; Hotend (H1) PID tuning settings
 M570 S360				; Hot end may be a little slow to heat up so allow it 180 seconds
 M143 S285
 
