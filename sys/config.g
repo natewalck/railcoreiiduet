@@ -71,14 +71,14 @@ G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatu
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X0 Y30 Z2.003 P500		    	; Set the zprobe height and threshold (put your own values here)
+G31 X3 Y40 Z2.003 P500		    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
 ;M558 P5 X0 Y0 Z1 H5 F50 T2000 A5 S0.02  ;1.20
 ;M558 P9 X0 Y0 Z1 H5 F50 T6000 A5 S0.02  ;1.21rc3
 
-G31 X2 Y42 Z2.65 P25 ; 2.62
+;G31 X2 Y42 Z2.65 P25 ; 2.62
 
 ;*** If you are using axis compensation, put the figures in the following command
 ;M556 S78 X0 Y0 Z0                 	; Axis compensation here
