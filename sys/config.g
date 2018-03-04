@@ -30,7 +30,7 @@ M569 P6 S0							; Drive 6 goes backwards
 M569 P7 S0							; Drive 7 goes backwards
 
 ;Leadscrew locations
-M671 X-10:-10:283  Y22.5:227.5:125 S7.5  ;Front left, Rear Left, Right  S7.5 is the max correction
+M671 X-10:-10:273  Y24:228:122 S7.5 ; Calibrated Front left, Rear Left, Right  S7.5 is the max correction
 
 M350 X16 Y16 Z16 E16 I1	            ; set 16x microstepping for axes& extruder, with interpolation
 M574 X1 Y1 Z0 S0		            ; set homing switch configuration (x,y at min, z at max)
