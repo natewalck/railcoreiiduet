@@ -40,7 +40,7 @@ M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
 M208 X240 Y240 Z230                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z-0.5 S1                 ; set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X201.5 Y201.5 Z1600 E920	    ; steps/mm
+M92 X201.5 Y201.5 Z1600 E845	    ; steps/mm
 
 ; Thermistors
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
