@@ -23,10 +23,12 @@ G90                       ; back to absolute mode
 ; Adjust the XY coordinates in the following to place the Z probe over a suitable spot,
 ; preferably near the centre of the bed if your Z probe supports that
 G91
-G1 Z4 F200
+G1 Z5 F800 S2
 G90
-G1 X120 Y120 F6000
+G1 X120 Y125 F2400
 G30
+G1 Z2 F200
+
 ; This file leaves the head at the zprobe trigger height so that you can slip a piece of paper under it and then do G0 Z0 to check the height.
 ; If you prefer to send the printer to X0Y0Z0, un-comment the following lines
 ;G1 X0 Y0 F5000
