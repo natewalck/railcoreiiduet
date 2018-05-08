@@ -38,7 +38,7 @@ M906 X900 Y900 Z800 E700 I60	    ; Set motor currents (mA)
 M201 X3000 Y3000 Z20 E1000          ; Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
-M208 X232 Y240 Z230                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
+M208 X220 Y240 Z230                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z-0.5 S1                 ; set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
 M92 X201.5 Y201.5 Z1600 E837	    ; steps/mm
 
@@ -71,7 +71,7 @@ G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatu
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X3 Y40 Z1.450 P500		    	; Set the zprobe height and threshold (put your own values here)
+G31 X3 Y40 Z1.60 P500	 	    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
