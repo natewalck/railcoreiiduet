@@ -8,7 +8,7 @@ M540 P0xBE:0xEF:0xDE:0xAD:0xFE:0xEE ; MAC Address
 
 ; Wifi Networking
 M552 S1								; Enable WiFi
-M587 S"SSID_GOES_HERE" P"PASSWORD_GOES_HERE"
+M587 S"***REMOVED***" P"***REMOVED***"
 M552 P0.0.0.0
 M555 P2                           	; Set output to look like Marlin
 M575 P1 B57600 S1					; Comms parameters for PanelDue
@@ -23,7 +23,7 @@ M667 S1								; CoreXY mode
 M569 P0 S0                          ; Drive 0 goes forwards (change to S0 to reverse it)
 M569 P1 S1                          ; Drive 1 goes backwards
 M569 P2 S1                          ; Drive 2 goes forwards
-M569 P3 S1                          ; Drive 3 goes forwards
+M569 P3 S0                          ; Extruder (Drive 3) S1 for Bondtech, S0 for Titan
 M569 P4 S1                          ; Drive 4 goes forwards
 M569 P5 S0							; Drive 5 goes backwards
 M569 P6 S0							; Drive 6 goes backwards
@@ -34,17 +34,17 @@ M671 X-10:-10:273  Y24:228:122 S7.5 ; Calibrated Front left, Rear Left, Right  S
 
 M350 X16 Y16 Z16 E16 I1	            ; set 16x microstepping for axes& extruder, with interpolation
 M574 X1 Y1 Z0 S0		            ; set homing switch configuration (x,y at min, z at max)
-M906 X900 Y900 Z800 E700 I60	    ; Set motor currents (mA)
+M906 X900 Y900 Z800 E900 I60	    ; Set motor currents (mA)
 M201 X3000 Y3000 Z20 E1000          ; Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
 M208 X220 Y240 Z230                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z-0.5 S1                 ; set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X201.5 Y201.5 Z1600 E837	    ; steps/mm
+M92 X201.5 Y201.5 Z1600 E406	    ; steps/mm
 
 ; Thermistors
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
-M305 P1 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
+M305 P1 S"Nozzle" T500000 B3965 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
 
 M307 H0 A92.4 C462.7 D5.9 S1.00 V24.2 B0  ; Heated Bed (H0) PID tuning settings
 M307 H1 A351.9 C170.9 D6.2 S1.00 V24.3 B0 ; Hotend (H1) PID tuning settings
@@ -71,7 +71,7 @@ G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatu
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X3 Y40 Z1.60 P500	 	    	; Set the zprobe height and threshold (put your own values here)
+G31 X7 Y37 Z0.71 P500	 	    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
