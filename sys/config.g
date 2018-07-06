@@ -33,7 +33,8 @@ M569 P7 S0							; Drive 7 goes backwards
 M671 X-10:-10:273  Y24:228:122 S7.5 ; Calibrated Front left, Rear Left, Right  S7.5 is the max correction
 
 M350 X16 Y16 Z16 E16 I1	            ; set 16x microstepping for axes& extruder, with interpolation
-M574 X1 Y1 Z0 S0		            ; set homing switch configuration (x,y at min, z at max)
+M574 X1 Y1 S3		            ; set sensorless homing for X/Y
+M574 Z0 S0		            ; set sensored homing for Z( z at max)
 M906 X900 Y900 Z800 E900 I60	    ; Set motor currents (mA)
 M201 X3000 Y3000 Z20 E1000          ; Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
@@ -44,7 +45,7 @@ M92 X201.5 Y201.5 Z1600 E406	    ; steps/mm
 
 ; Thermistors
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
-M305 P1 S"Nozzle" T500000 B3965 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
+M305 P1 S"Nozzle" T500000 B3800 R4700	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
 
 M307 H0 A92.4 C462.7 D5.9 S1.00 V24.2 B0  ; Heated Bed (H0) PID tuning settings
 M307 H1 A351.9 C170.9 D6.2 S1.00 V24.3 B0 ; Hotend (H1) PID tuning settings
@@ -71,7 +72,7 @@ G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatu
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X7 Y37 Z0.71 P500	 	    	; Set the zprobe height and threshold (put your own values here)
+G31 X7 Y37 Z1.735 P500	 	    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
