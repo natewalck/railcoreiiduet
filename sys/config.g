@@ -8,7 +8,7 @@ M540 P0xBE:0xEF:0xDE:0xAD:0xFE:0xEE ; MAC Address
 
 ; Wifi Networking
 M552 S1								; Enable WiFi
-M587 S"***REMOVED***" P"***REMOVED***"
+M587 S"WAT" P"WAT"
 M552 P0.0.0.0
 M555 P2                           	; Set output to look like Marlin
 M575 P1 B57600 S1					; Comms parameters for PanelDue
@@ -45,12 +45,12 @@ M92 X201.5 Y201.5 Z1600 E406	    ; steps/mm
 
 ; Thermistors
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
-M305 P1 S"Nozzle" T500000 B3800 R4700	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
+M305 P1 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
 
 M307 H0 A92.4 C462.7 D5.9 S1.00 V24.2 B0  ; Heated Bed (H0) PID tuning settings
 M307 H1 A351.9 C170.9 D6.2 S1.00 V24.3 B0 ; Hotend (H1) PID tuning settings
 M570 S360				; Hot end may be a little slow to heat up so allow it 180 seconds
-M143 S285
+M143 S320
 
 ; Fans
 M106 P0 H-1 			 	        ; disable thermostatic mode for fan 0
@@ -63,6 +63,7 @@ M106 P2 S0
 ; Tool definitions
 M563 P0 D0 H1                       ; Define tool 0
 G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatures
+M591 D0 P5 C3 R40:120 E3.0 S0       ; laser filament monitor
 ;*** If you have a single-nozzle build, comment the next 2 lines
 ;M563 P1 D1 H2                      ; Define tool 1
 ;G10 P1 S0 R0 X0 Y17                ; Set tool 1 operating and standby temperatures
@@ -72,7 +73,7 @@ G10 P0 S0 R0                        ; Set tool 0 operating and standby temperatu
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X7 Y37 Z1.735 P500	 	    	; Set the zprobe height and threshold (put your own values here)
+G31 X7 Y37 Z1.56 P500	 	    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
