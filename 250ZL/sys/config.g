@@ -8,7 +8,7 @@ M540 P0xBE:0xEF:0xDE:0xAD:0xFE:0xEE ; MAC Address
 
 ; Wifi Networking
 M552 S1								; Enable WiFi
-M587 S"WAT" P"WAT"
+M587 S"*REDACTED*" P"*REDACTED*"
 M552 P0.0.0.0
 M555 P2                           	; Set output to look like Marlin
 M575 P1 B57600 S1					; Comms parameters for PanelDue
@@ -30,7 +30,7 @@ M569 P6 S0							; Drive 6 goes backwards
 M569 P7 S0							; Drive 7 goes backwards
 
 ;Leadscrew locations
-M671 X-10:-10:273  Y24:228:122 S7.5 ; Calibrated Front left, Rear Left, Right  S7.5 is the max correction
+M671 X-10:-10:333 Y22.5:277.5:150 S7.5 ;Front left, Rear Left, Right S7.5 is the max correction - measure your own offsets, to the bolt for the yoke of each leadscrew
 
 M350 X16 Y16 Z16 E16 I1	            ; set 16x microstepping for axes& extruder, with interpolation
 M574 X1 Y1 S3		            ; set sensorless homing for X/Y
@@ -41,7 +41,7 @@ M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
 M208 X220 Y240 Z230                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z-0.5 S1                 ; set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X201.5 Y201.5 Z1600 E406	    ; steps/mm
+M92 X201.5 Y201.5 Z1600 E837	    ; steps/mm
 
 ; Thermistors
 M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
@@ -73,7 +73,7 @@ M591 D0 P5 C3 R40:120 E3.0 S0       ; laser filament monitor
 ; Z probe and compensation definition
 ;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X7 Y37 Z1.56 P500	 	    	; Set the zprobe height and threshold (put your own values here)
+G31 X7 Y37 Z1.68 P500	 	    	; Set the zprobe height and threshold (put your own values here)
 
 ;BLTouch
 ;M307 H3 A-1 C-1 D-1
