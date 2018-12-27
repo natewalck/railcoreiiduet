@@ -1,8 +1,8 @@
 ; home X
 
 M400                    	; make sure everything has stopped before we make changes
-M913 X30 Y30             	; reduce motor current to 30% to prevent belts slipping
-M201 X1000 Y1000                ; reduce acceleration on X/Y to stop false triggers
+M913 X33 Y33             	; reduce motor current to 30% to prevent belts slipping
+M201 X900 Y900                ; reduce acceleration on X/Y to stop false triggers
 M915 P0:1 S3 R0 F0              ; both motors because corexy; Sensitivity 4, don’t take action, don’t filter
 
 G91                   	 	; use relative positioning
