@@ -8,7 +8,7 @@ M540 P0xBE:0xEF:0xDE:0xAD:0xFE:0xEF ; MAC Address
 
 ; Wifi Networking
 M552 S1								; Enable WiFi
-M587 S"*REDACTED* P"*REDACTED*"
+M587 S"*REDACTED*" P"*REDACTED*"
 M552 P0.0.0.0
 M555 P2                           	; Set output to look like Marlin
 M575 P1 B57600 S1					; Comms parameters for PanelDue
@@ -42,13 +42,13 @@ M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z5 E20            ; Maximum jerk speeds mm/minute
 M208 X290 Y290 Z320                 ; set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z-0.5 S1                 ; set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X200 Y200 Z1600 E800	    ; steps/mm
+M92 X200 Y200 Z1600 E816	    ; steps/mm
 
 ; Thermistors
-M305 P0 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the bed thermistor ADC correction
-;M305 P1 T100000 B4240 R4700 H0 L0	; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
-M305 P1 X200                            ; PT100 Sensor config
-
+M305 P0 T100000 B4240 R4700 H0 L0	          ; Put your own H and/or L values here to set the bed thermistor ADC correction
+;M305 P1 T100000 B4240 R4700 H0 L0	          ; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
+M305 P1 X200                                      ; PT100 Sensor config
+M305 P107 S"Keenovo" X7 T100000 B4240 R4700 H0 L0 ; Secondary bed thermistor
 
 M307 H0 A92.4 C462.7 D5.9 S1.00 V24.2 B0  ; Heated Bed (H0) PID tuning settings
 M307 H1 A351.9 C170.9 D6.2 S1.00 V24.3 B0 ; Hotend (H1) PID tuning settings
@@ -78,16 +78,10 @@ M591 D0 P1 C3 S1                    ; Set simple filament sensor for E0
 ;M558 P8 I1 H3 R0.8 F400
 ;G31 X0 Y0 Z0 P500
 
-
-; Z probe and compensation definition
-;*** If you have a switch instead of an IR probe, change P1 to P4 in the following M558 command
-;M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-;G31 X7 Y37 Z1.56 P500	 	    	; Set the zprobe height and threshold (put your own values here)
-
 ;BLTouch
 M307 H3 A-1 C-1 D-1
 M558 P9 H5 R1 F50 T6000 A5 S0.02 B1
-G31 X2 Y42 Z1.97 P25 
+G31 X2 Y42 Z2.22 P25 
 ;M558 P5 X0 Y0 Z1 H5 F50 T2000 A5 S0.02  ;1.20
 ;M558 P9 X0 Y0 Z1 H5 F50 T6000 A5 S0.02  ;1.21rc3
 
