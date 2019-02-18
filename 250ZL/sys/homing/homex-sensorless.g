@@ -1,4 +1,4 @@
-; home X
+; home X - Sensorless
 
 M400                    	; make sure everything has stopped before we make changes
 M913 X30 Y30             	; reduce motor current to 30% to prevent belts slipping

@@ -1,5 +1,6 @@
 ; homeall by executing individual axes homing macros
 
-M98 Phomex.g
-M98 Phomey.g
-M98 Phomez.g
+; Sensorless homing
+M98 P"homing/homex-sensorless.g"
+M98 P"homing/homey-sensorless.g"
+M98 P"homing/homez.g"

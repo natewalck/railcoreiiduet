@@ -6,10 +6,8 @@ M550 PRailCore250ZL				    ; Machine name and Netbios name (can be anything you 
 ;*** If you have more than one Duet on your network, they must all have different MAC addresses, so change the last digits
 M540 P0xBE:0xEF:0xDE:0xAD:0xFE:0xEE ; MAC Address
 
-; Wifi Networking
-M552 S1								; Enable WiFi
-M587 S"*REDACTED*" P"*REDACTED*"
-M552 P0.0.0.0
+M98 P"wifi.g"                       ; Run WiFi configuration file.
+
 M555 P2                           	; Set output to look like Marlin
 M575 P1 B57600 S1					; Comms parameters for PanelDue
 
