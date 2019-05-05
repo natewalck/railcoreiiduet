@@ -21,7 +21,7 @@ M574 X1 Y1 S3		                ; set sensorless homing for X/Y
 M574 Z0 S0		                    ; set sensored homing for Z( z at max)
 
 ; Stepper settings
-M906 X900 Y900 Z800 E900 I60	    ; Set motor currents (mA)
+M906 X1000 Y1000 Z1000 E700 I60	    ; Set motor currents (mA)
 M201 X3000 Y3000 Z20 E1000          ; Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
 M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
@@ -44,4 +44,4 @@ M591 D0 P5 C3 R40:120 E3.0 S0       ; laser filament monitor
 
 ; Z probe and compensation definition
 M558 P1 X0 Y0 Z1			        ; Z probe is an IR probe and is not used for homing any axes
-G31 X7 Y37 Z1.15 P500	 	    	; Set the zprobe height and threshold (put your own values here)
+G31 X7 Y37 Z1.20 P500	 	    	; Set the zprobe height and threshold (put your own values here)
