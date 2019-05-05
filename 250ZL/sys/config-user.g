@@ -22,6 +22,9 @@ M574 Z0 S0		                    ; set sensored homing for Z( z at max)
 
 ; Stepper settings
 M906 X900 Y900 Z800 E900 I60	    ; Set motor currents (mA)
+M201 X3000 Y3000 Z20 E1000          ; Accelerations (mm/s^2)
+M203 X24000 Y24000 Z900 E3600       ; Maximum speeds (mm/min)
+M566 X1000 Y1000 Z30 E20            ; Maximum jerk speeds mm/minute
 
 ; Set axis minima:maxima switch positions
 M208 X0:220 Y0:240 Z-0.2:230        ; 250ZL
