@@ -94,4 +94,6 @@ G10 P0 S0 R0                            ; Set tool 0 operating and standby tempe
 M98 P"conservative.g"
 
 T0                                      ; select first hot end
+
+M98 P"config-user.g"                    ; Load custom user config
 M501                                    ; Load saved parameters from non-volatile memory
