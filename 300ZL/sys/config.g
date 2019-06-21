@@ -92,7 +92,12 @@ G10 P0 S0 R0                            ; Set tool 0 operating and standby tempe
 ;*** otherwise leave commented out
 M307 H3 A-1 C-1 D-1
 M558 P9 X0 Y0 Z1 H5 F50 T6000 A5 S0.02
-G31 X2 Y42 Z1.85 P25 ; Customize your offsets appropriately.
+;G31 X2 Y42 Z2.32 P25 ; Customize your offsets appropriately. ; BLTouch v1
+G31 X2 Y42 Z1.55 P25 ; Customize your offsets appropriately. ; BLTouch v2
+
+;Switch Connected to E1
+;M558 P4 C4 H5 R0 F500 T12000 I1 A5 S0.01
+;G31 X0 Y42 Z0 P500
 
 M208 S1 Z-0.2                           ; set minimum Z
 T0                                      ; select first hot end
