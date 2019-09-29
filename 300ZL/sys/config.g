@@ -26,8 +26,8 @@ M669 K1                                 ; CoreXY mode
 
 ; Drives
 M584 X0 Y1 Z5:6:7 E3:4:8:9  ; Map Z to drivers 5, 6, 7. Define unused drivers 3,4,8 and 9 as extruders
-M569 P0 S1                  ; Drive 0 goes forwards (change to S0 to reverse it)| X stepper
-M569 P1 S1                  ; Drive 1 goes backwards(change to S1 to reverse it)| Y Stepper
+M569 P0 S0                  ; Drive 0 goes forwards (change to S0 to reverse it)| X stepper
+M569 P1 S0                  ; Drive 1 goes backwards(change to S1 to reverse it)| Y Stepper
 M569 P2 S1                  ; Drive 2 goes forwards                             | Unused
 M569 P3 S0                  ; Drive 3 goes forwards                             | Extruder S1 for Bondtech, S0 for Titan
 M569 P4 S1                  ; Drive 4 goes forwards                             | Extruder (unused)
@@ -42,24 +42,26 @@ M671 X-10:-10:333 Y22.5:277.5:150 S7.5 ;Front left,(-10,22.5) Rear Left (-10.,22
 M350 X16 Y16 Z16 E16 I1                 ; Set 16x microstepping for axes & extruder, with interpolation.
 M574 X1 Y1 S3		                    ; set sensorless homing for X/Y
 M574 Z0 S0		                        ; set sensored homing for Z( z at max)
-M906 X1000 Y1000 Z1000 E700 I60         ; Set motor currents (mA)
-M201 X3000 Y3000 Z20 E1000              ; Accelerations (mm/s^2)
+M906 X1400 Y1400 Z1000 E1000 I60        ; Set motor currents (mA)
+M201 X4000 Y4000 Z20 E1000              ; Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600           ; Maximum speeds (mm/min)
-M566 X1000 Y1000 Z30 E20                ; Maximum jerk speeds mm/minute
+M566 X1500 Y1500 Z30 E20                ; Maximum jerk speeds mm/minute
 M208 X290 Y290 Z320                     ; Set axis maxima and high homing switch positions (adjust to suit your machine)
-M208 X0 Y0 Z-0.5 S1                     ; Set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X200 Y200 Z1600 E816                ; Steps/mm
+M208 X0 Y0 Z0 S1                        ; Set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
+M92 X200 Y200 Z1600 E830                ; Steps/mm
 
 ; Thermistors
 M305 P0 S"Bed" T100000 B3950 R4700 H0 L0 ; BOM thermistor values. Put your own H and/or L values here to set the bed thermistor ADC correction
-;M305 P1 T100000 B4240 R4700 H0 L0       ; Put your own H and/or L values here to set the first nozzle thermistor ADC correction
-M305 P1 X200                             ; PT100 Sensor config
+;M305 P1 T100000 B4240 R4700 H0 L0       ; E3D - Put your own H and/or L values here to set the first nozzle thermistor ADC correction
+;M305 P1 T500000 B3800 R4700              ; Slice - Put your own H and/or L values here to set the first nozzle thermistor ADC correction      
+M305 P1 X200                            ; PT100 Sensor config
 M305 P107 S"Keenovo" X7 T100000 B4240 R4700 H0 L0 ; Secondary bed thermistor
+M305 P106 S"Chamber" X6 T100000 B3950 R4700 H0 L0 ; Chamber Temp Thermistor
 
 ;Heaters
 
 M570 S360                               ; Hot end may be a little slow to heat up so allow it 360 seconds
-M143 S320                               ; Maximum heater temperature
+M143 S340                               ; Maximum heater temperature
 
 ; Fans
 M106 P0 H-1                             ; Disable thermostatic mode for fan 0
@@ -92,8 +94,12 @@ G10 P0 S0 R0                            ; Set tool 0 operating and standby tempe
 ;*** otherwise leave commented out
 M307 H3 A-1 C-1 D-1
 M558 P9 X0 Y0 Z1 H5 F50 T6000 A5 S0.02
-;G31 X2 Y42 Z2.32 P25 ; Customize your offsets appropriately. ; BLTouch v1
-G31 X2 Y42 Z1.55 P25 ; Customize your offsets appropriately. ; BLTouch v2
+;G31 X2 Y42 Z2.32 P25 ; Customize your offsets appropriately. BLTouch v1
+;G31 X2 Y42 Z1.55 P25 ; Customize your offsets appropriately. BLTouch v2 + Volcano
+;G31 X2 Y42 Z1.68 P25 ; Customize your offsets appropriately. BLTouch v2 + Mosquito + Vanadium
+;G31 X2 Y42 Z1.693 P25 ; Customize your offsets appropriately. BLTouch v2 + Mosquito + E3D Nozzle
+G31 X2 Y42 Z1.90 P25 ; Customize your offsets appropriately. BLTouch v2 + Mosquito + E3D Nozzle + Subtle Design EverFlex
+;G31 X2 Y42 Z1.94 P25 ; Customize your offsets appropriately. BLTouch v2 + Mosquito + Slice Nozzle + Garolite
 
 ;Switch Connected to E1
 ;M558 P4 C4 H5 R0 F500 T12000 I1 A5 S0.01
