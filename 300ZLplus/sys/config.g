@@ -5,7 +5,7 @@ M83						;...but relative extruder moves
 
 ; Stepper configuration
 M569 P0 S1 D3					;Drive 0 X / Rear
-M569 P1 S1 D3					;Drive 1 Y / Front
+M569 P1 S0 D3					;Drive 1 Y / Front
 M569 P2 S0 D3					;Drive 2 Z Front Left
 M569 P3 S0 D3					;Drive 3 Z Rear Left
 M569 P4 S0 D3					;Drive 4 Z Right
@@ -28,8 +28,8 @@ M208 X0 Y0 Z0 S1				;set axis minima and low homing switch positions (adjust to 
 M92 X200 Y200 Z1600 E837			;steps/mm
  
 ; End Stops
-M574 X1 S1 P"io1.in"				;Map the X endstop to io1.in
-M574 Y1 S1 P"io2.in"				;May the Y endstop to io2.in
+M574 X1 S1 P"io4.in"				;Map the X endstop to io1.in
+M574 Y2 S1 P"io2.in"				;May the Y endstop to io2.in
  
 ; Thermistors
 M308 S0 P"temp0" Y"thermistor" A"bed_heat" T100000 B4240 H0 L0 		;Bed thermistor - connected to temp0
