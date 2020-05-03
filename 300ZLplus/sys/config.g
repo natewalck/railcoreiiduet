@@ -6,9 +6,9 @@ M83						;...but relative extruder moves
 ; Stepper configuration
 M569 P0 S1 D3					;Drive 0 X / Rear
 M569 P1 S0 D3					;Drive 1 Y / Front
-M569 P2 S0 D3					;Drive 2 Z Front Left
-M569 P3 S0 D3					;Drive 3 Z Rear Left
-M569 P4 S0 D3					;Drive 4 Z Right
+M569 P2 S1 D3					;Drive 2 Z Front Left
+M569 P3 S1 D3					;Drive 3 Z Rear Left
+M569 P4 S1 D3					;Drive 4 Z Right
 M569 P5 S1 D3					;Drive 5 Extruder
 
 ;Axis configuration
