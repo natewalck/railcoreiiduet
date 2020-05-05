@@ -16,14 +16,14 @@ M669 K1						;corexy mode
 M584 X0 Y1 Z2:3:4 E5				; Map X to drive 0 Y to drive 1, Z to drives 2, 3, 4, and E to drive 5
 
 ;Leadscrew locations
-M671 X-10:-10:333  Y22.5:277.5:150 S7.5
+M671 X-10:-80:333  Y22.5:277.5:150 S7.5
 
 M350 X16 Y16 Z16 E16 I1				;set 16x microstepping for axes with interpolation
 M906 X1400 Y1400 Z1200 E800 I80			;Set motor currents (mA)
 M201 X2500 Y2500 Z100 E1500			;Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600			;Maximum speeds (mm/min) 
 M566 X800 Y800 Z100 E1500			;Maximum jerk speeds mm/minute 
-M208 X290 Y290 Z280				;set axis maxima and high homing switch positions (adjust to suit your machine)
+M208 X280 Y310 Z280				;set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z0 S1				;set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
 M92 X200 Y200 Z1600 E837			;steps/mm
  
@@ -61,6 +61,7 @@ G10 P0 S0 R0                        		;Set tool 0 operating and standby temperat
 ;BLTouch
 M558 P9 C"io7.in" H5 R1 F120 T6000 A5 S0.02 B1	;define the bltouch input on io7.in
 M950 S0 C"io7.out"				;define the bltouch servo on io7.out
-G31 X2 Y42 Z2.00 P25 			;set the offsets for the bltouch
+;G31 X45 Y-40 Z2.00 P25 			;set the offsets for the rear mount bltouch hemera carriage
+G31 X-5 Y-43 Z2.00 P25 			;set the offsets for the bltouch
 
 T0						;select first hot end
