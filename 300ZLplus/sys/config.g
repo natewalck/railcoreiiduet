@@ -49,7 +49,11 @@ M570 S360					;Hot end may be a little slow to heat up so allow it 180 seconds
 M143 S285					;Set max hotend temperature			
 
 ; Fans - Non-PWM
+<<<<<<< HEAD
 M950 F0 C"out7"					;Hotend fan on "out7" connector
+=======
+M950 F0 C"out7"					;Hotend fan on "out5" connector
+>>>>>>> 1d668266dcd546fbc1bf909f127e570ae0714873
 M106 P0 S255 H1 T50 			;enable thermostatic mode for hotend fan
 M950 F1 C"out8"					;Layer fan on "out7" connector
 M106 P1 S0 						;Layer Fan
