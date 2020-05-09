@@ -3,8 +3,8 @@ if !move.axes[0].homed || !move.axes[1].homed || !move.axes[2].homed
   G28
   G32
   ; Pass 2 on Z
-  G28 Z 
-  
+  G28 Z
+
 G90
 G1 Z5
 
