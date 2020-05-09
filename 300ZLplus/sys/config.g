@@ -3,6 +3,8 @@ G21						;Work in millimetres
 G90						;Send absolute coordinates...
 M83						;...but relative extruder moves
 
+M929 P"eventlog.txt" S1     ; Start logging to file eventlog.txt
+
 ; Stepper configuration
 M569 P0 S1 D3					;Drive 0 X / Rear
 M569 P1 S0 D3					;Drive 1 Y / Front
@@ -19,13 +21,13 @@ M584 X0 Y1 Z2:3:4 E5				; Map X to drive 0 Y to drive 1, Z to drives 2, 3, 4, an
 M671 X-10:-80:333  Y22.5:277.5:150 S7.5
 
 M350 X16 Y16 Z16 E16 I1				;set 16x microstepping for axes with interpolation
-M906 X1400 Y1400 Z1200 E800 I80			;Set motor currents (mA)
+M906 X1400 Y1400 Z1200 E1180 I80			;Set motor currents (mA)
 M201 X2500 Y2500 Z100 E1500			;Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600			;Maximum speeds (mm/min) 
 M566 X800 Y800 Z100 E1500			;Maximum jerk speeds mm/minute 
 M208 X280 Y310 Z280				;set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z0 S1				;set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X200 Y200 Z1600 E837			;steps/mm
+M92 X200 Y200 Z1600 E395			;steps/mm
  
 ; End Stops
 M574 X1 S1 P"io4.in"				;Map the X endstop to io1.in
@@ -51,7 +53,7 @@ M143 S285					;Set max hotend temperature
 ; Fans - Non-PWM
 M950 F0 C"out7"					;Hotend fan on "out7" connector
 M106 P0 S255 H1 T50 			;enable thermostatic mode for hotend fan
-M950 F1 C"out8"					;Layer fan on "out8" connector
+M950 F1 C"out8"					;Layer fan on "out7" connector
 M106 P1 S0 						;Layer Fan
 
 ; Tool definitions

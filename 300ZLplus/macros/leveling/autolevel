@@ -1,0 +1,20 @@
+M561                                    ; Clear bed transforms- stop mesh compensation being used during this operation
+if !move.axes[0].homed || !move.axes[1].homed || !move.axes[2].homed
+  G28
+  G32
+  ; Pass 2 on Z
+  G28 Z 
+  
+G90
+G1 Z5
+
+G32
+
+while true
+  if iterations = 5
+    abort "Too many auto calibration attempts"
+  if move.calibration.initial.deviation <= 0.05 && move.calibration.initial.mean <= 0.005 && move.calibration.initial.mean >= -0.005
+    if move.calibration.final.deviation < move.calibration.initial.deviation + 0.005
+      if move.calibration.final.deviation > move.calibration.initial.deviation - 0.005
+        break
+  G32
