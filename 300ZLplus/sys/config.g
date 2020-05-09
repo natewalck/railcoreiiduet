@@ -42,20 +42,16 @@ M950 H1 C"out1" T1				;Hotend heater is on out1
 ;Define Bed
 M140 H0
 
-M307 H0 A90.0 C700.0 D10.0 S1.00 B1 		;Keenovo duet 3 configuration
+M307 H0 A90.0 C700.0 D10.0 S1.00 B1 		;Keenovo duet 4 configuration
 M307 H1 A310.1 C144.7 D2.6 S1.00 B0 		;E3D Hotend  duet 3 configuration
 
 M570 S360					;Hot end may be a little slow to heat up so allow it 180 seconds
 M143 S285					;Set max hotend temperature			
 
 ; Fans - Non-PWM
-<<<<<<< HEAD
 M950 F0 C"out7"					;Hotend fan on "out7" connector
-=======
-M950 F0 C"out7"					;Hotend fan on "out5" connector
->>>>>>> 1d668266dcd546fbc1bf909f127e570ae0714873
 M106 P0 S255 H1 T50 			;enable thermostatic mode for hotend fan
-M950 F1 C"out8"					;Layer fan on "out7" connector
+M950 F1 C"out8"					;Layer fan on "out8" connector
 M106 P1 S0 						;Layer Fan
 
 ; Tool definitions
