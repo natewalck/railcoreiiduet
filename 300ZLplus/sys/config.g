@@ -21,13 +21,13 @@ M584 X0 Y1 Z2:3:4 E5				; Map X to drive 0 Y to drive 1, Z to drives 2, 3, 4, an
 M671 X-10:-80:333  Y22.5:277.5:150 S7.5
 
 M350 X16 Y16 Z16 E16 I1				;set 16x microstepping for axes with interpolation
-M906 X1400 Y1400 Z1200 E1180 I80			;Set motor currents (mA)
-M201 X2500 Y2500 Z100 E1500			;Accelerations (mm/s^2)
+M906 X1400 Y1400 Z1200 E1000 I80			;Set motor currents (mA)
+M201 X3000 Y3000 Z100 E3000			;Accelerations (mm/s^2)
 M203 X24000 Y24000 Z900 E3600			;Maximum speeds (mm/min) 
-M566 X800 Y800 Z100 E1500			;Maximum jerk speeds mm/minute 
+M566 X1000 Y1000 Z100 E3600			;Maximum jerk speeds mm/minute 
 M208 X280 Y310 Z280				;set axis maxima and high homing switch positions (adjust to suit your machine)
 M208 X0 Y0 Z0 S1				;set axis minima and low homing switch positions (adjust to make X=0 and Y=0 the edges of the bed)
-M92 X200 Y200 Z1600 E395			;steps/mm
+M92 X200 Y200 Z1600 E830			;steps/mm
  
 ; End Stops
 M574 X1 S1 P"io4.in"				;Map the X endstop to io1.in
@@ -35,7 +35,10 @@ M574 Y2 S1 P"io2.in"				;May the Y endstop to io2.in
  
 ; Thermistors
 M308 S0 P"temp0" Y"thermistor" A"bed_heat" T100000 B4240 H0 L0 		;Bed thermistor - connected to temp0
-M308 S1 P"temp1" Y"thermistor" A"e0_heat" T100000 B4725 C7.06e-8 H0 L0	;duet3 e3d thermistor - connected to e0_heat
+; Thermistor config
+;M308 S1 P"temp1" Y"thermistor" A"e0_heat" T100000 B4725 C7.06e-8 H0 L0	;duet3 e3d thermistor - connected to e0_heat
+; PT100 Config
+M308 S1 P"spi.cs0" Y" rtd-max31865" A"e0_heat" ; PT100 connected to RTD port 1 on the temp daughterboard
 
 ;Define Heaters
 M950 H0 C"out0" T0				;Bed heater is on out0
@@ -64,6 +67,10 @@ G10 P0 S0 R0                        		;Set tool 0 operating and standby temperat
 M558 P9 C"io7.in" H5 R1 F120 T6000 A5 S0.02 B1	;define the bltouch input on io7.in
 M950 S0 C"io7.out"				;define the bltouch servo on io7.out
 ;G31 X45 Y-40 Z2.00 P25 			;set the offsets for the rear mount bltouch hemera carriage
-G31 X-5 Y-43 Z2.00 P25 			;set the offsets for the bltouch
+G31 X-5 Y-43 Z1.465 P25 			;set the offsets for the bltouch
 
 T0						;select first hot end
+
+; This is broken, doing a janky version instead
+; M501 ; Load stored parameters
+M98 P"pid-tuning.g"
