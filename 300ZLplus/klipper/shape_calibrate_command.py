@@ -1,0 +1,1 @@
+SHAPER_CALIBRATE PROBE_POINTS=150,150,20 HZ_PER_SEC=.8 AXES=XY RAW_OUTPUT=/tmp/accel-data.csv FIG_BASENAME=/tmp/shaper_calibration.png
